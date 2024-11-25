@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+</head>
+
+<body>
+  <main>
+    <form action="">
+      <h1>Mortgage Calculator</h1>
+      <button class="clear-all">Clear All</button>
+      <label for="amounta">
+        Mortgage Amount
+        <div>
+          <span>&#163;</span>
+          <input type="number" required id="amount">
+        </div>
+
+        <span class="error error-mortgage-amount">This field is required</span>
+      </label>
+
+      <div class="details">
+        <label for="term">
+          Mortgage Term
+          <div>
+            <input class="details-input" type="number" required id="term">
+            <span>years</span>
+          </div>
+          <span class="error error-mortgage-amount">This field is required</span>
+        </label>
+
+        <label for="rate">
+          Mortgage Rate
+          <div>
+            <input class="details-input" type="number" required id="rate">
+            <span>&#37;</span>
+          </div>
+          <span class="error error-mortgage-amount">This field is required</span>
+        </label>
+      </div>
+
+
+      <fieldset class="mortgage-type">
+        Mortgage Type
+        <label for="repayment">
+          <input required type="radio" name="mortgage-type" id="repayment" value="repayment">
+          Repayment
+        </label>
+
+        <label for="interest-only">
+          <input required type="radio" name="mortgage-type" id="interest-only" value="interest-only">
+          Interest Only
+        </label>
+        <span class="error error-mortgage-amount">This field is required</span>
+      </fieldset>
+
+      <button type="submit" class="calculate">
+        <img src="assets/images/icon-calculator.svg" alt="calculator">
+        Calculator Repayments
+      </button>
+
+    </form>
+
+    <section class="results-cart results-empty">
+      <img src="assets/images/illustration-empty.svg" alt="empty-state">
+      <h2>Results shown here</h2>
+      <p>Complete the form and click "calculate repayment" to see what your monthly repayments would be.</p>
+    </section>
+
+    <section class="results-cart results-filled">
+      <h2>Your results</h2>
+      <p>
+        Your results are shown below based on the information you provided. To adjust the results, edit the form and
+        click "calculate repayment" again.
+      </p>
+
+      <section class="final-results">
+        <div class="monthly-repayment">
+          <span>Your monthly repayment</span>
+          <strong class="monthly-amount-span">&#163;1,797.74</strong>
+        </div>
+
+        <div class="term-repayment">
+          <span>Total you'll repay over the term</span>
+          <strong class="total-repayment-span">&#163;539,322.94</strong>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>

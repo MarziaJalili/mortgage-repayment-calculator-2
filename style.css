@@ -1,0 +1,370 @@
+:root {
+
+    --Lime: hsl(61, 70%, 52%);
+    --Red: hsl(4, 69%, 50%);
+
+    --White: hsl(0, 0%, 100%);
+    --Slate-100: hsl(202, 86%, 94%);
+    --Slate-300: hsl(203, 41%, 72%);
+    --Slate-500: hsl(200, 26%, 54%);
+    --Slate-700: hsl(200, 24%, 40%);
+    --Slate-900: hsl(202, 55%, 16%);
+    --Slate-1000: hsl(201, 61%, 11%);
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button,
+input {
+    font: inherit;
+    cursor: pointer;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    display: grid;
+    min-height: 100vh;
+}
+
+main {
+    display: grid;
+    gap: 0.4rem;
+}
+
+h1 {
+    color: var(--Slate-900);
+    font-size: 1.6rem;
+}
+
+h1+button {
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    text-align: left;
+    color: var(--Slate-700);
+}
+
+form {
+    display: grid;
+    color: var(--Slate-700);
+    padding: 1.8rem 1.4rem;
+    gap: 1.4rem;
+    grid-template-columns: 1fr;
+}
+
+form label {
+    display: grid;
+    gap: 0.6rem;
+}
+
+form .details {
+    display: grid;
+    gap: 1.4rem;
+}
+
+form label div {
+    border: 1px solid var(--Slate-300);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color ease 0.2s;
+}
+
+form label div span {
+    padding: 0.6rem 1rem;
+    background-color: var(--Slate-100);
+    color: var(--Slate-900);
+    font-weight: 500;
+    font-size: 1.4rem;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 0px 4px 4px 0px;
+    transition: border-radius ease 0.1s, background-color ease-in-out 0.2s;
+
+}
+
+form label div:is(:hover, :focus) {
+    border-color: var(--Lime);
+
+    & span {
+        background-color: var(--Lime);
+        border-radius: 0;
+    }
+}
+
+
+
+form label div span:first-child {
+    border-radius: 4px 0px 0px 4px;
+}
+
+
+input:not(input[type="radio"]) {
+    outline: none;
+    border: none;
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    width: 100px;
+}
+
+.mortgage-type {
+    border: none;
+    display: grid;
+    gap: 1rem;
+}
+
+.mortgage-type>label {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.8rem;
+    font-size: 1.3rem;
+    gap: 1.5rem;
+    border: 1px solid var(--Slate-300);
+    border-radius: 4px;
+    color: var(--Slate-900);
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color ease 0.2s;
+}
+
+.mortgage-type>label:is(:hover, :focus) {
+    border-color: var(--Lime);
+}
+
+input[type=radio] {
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    outline: 2px solid var(--Slate-900);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+input[type=radio]:checked {
+    background-color: var(--Lime);
+    outline: 2px solid var(--Lime);
+}
+
+/* remove the arrow button from the inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+label.selected {
+    background-color: hsl(61 70% 52% / 0.2);
+    border-color: var(--Lime);
+}
+
+
+form button.calculate {
+    background-color: var(--Lime);
+    border: none;
+
+    display: flex;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+form button.calculate:hover {
+    background-color: hsl(61 70% 52% / .7);
+}
+
+.results-cart {
+    background-color: var(--Slate-900);
+    text-align: center;
+    color: var(--White);
+    padding: 2rem 2.6rem;
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+}
+
+.results-cart h2 {
+    font-size: 2rem;
+}
+
+.results-cart p {
+    color: var(--Slate-300);
+    font-size: 1.25rem;
+}
+
+
+
+/* results-cart final result state */
+
+.results-filled {
+    place-items: start;
+    text-align: left;
+    display: none;
+}
+
+.final-results {
+    background-color: var(--Slate-1000);
+    padding: 1.4rem 1.2rem;
+    width: 100%;
+    border-radius: 10px;
+    border-top: 4px solid var(--Lime);
+    display: grid;
+    gap: 1rem;
+}
+
+.final-results :is(.monthly-repayment, .term-repayment) {
+    display: grid;
+    gap: 1rem;
+
+    & span {
+        color: var(--Slate-300);
+        font-size: 1.1rem;
+    }
+
+    & strong {
+        font-size: 2.2rem;
+    }
+}
+
+.monthly-repayment {
+    border-bottom: 1px solid var(--Slate-700);
+    padding-bottom: 1rem;
+
+    .monthly-amount-span {
+        color: var(--Lime);
+    }
+}
+
+
+/* destop version */
+
+@media (min-width: 40em) {
+    body {
+        display: grid;
+        place-items: center;
+        padding: 8rem 5rem;
+        background-color: var(--Slate-100);
+    }
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 80%;
+        background-color: var(--White);
+        border-radius: 20px;
+
+    }
+
+    .results-cart {
+        border-radius: 0 20px 20px 80px;
+
+    }
+
+    form {
+        grid-template-columns: 1fr 100px;
+    }
+
+    form>* {
+        grid-column: span 2;
+    }
+
+    form :is(label, fieldset) {
+        font-size: 1.2rem;
+    }
+
+
+    h1 {
+        display: inline-block;
+        grid-column: 1;
+        margin-bottom: 1rem;
+    }
+
+    h1+button {
+        grid-column-start: 2;
+        margin-bottom: 1rem;
+
+    }
+
+    form .details {
+        display: flex;
+        gap: 1rem;
+    }
+
+    form .details input {
+        width: 50%;
+    }
+
+    form .calculate {
+        place-self: start;
+        padding: 2rem;
+    }
+
+    .results-empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-inline: 1.1rem;
+    }
+
+    .results-filled {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 1.5rem;
+        display: none;
+
+        & p {
+            font-size: 1.2rem;
+        }
+
+    }
+
+    .final-results {
+        gap: 1.5rem;
+        padding: 2rem 2.5rem;
+
+        .monthly-amount-span {
+            font-size: 3.5rem !important;
+            padding-bottom: 1.5rem;
+
+        }
+    }
+
+}
+
+
+/* error state */
+
+.error {
+    display: none;
+    color: var(--Red);
+}
+
+form label div.error-label {
+    border-color: var(--Red);
+
+    & span {
+        background-color: var(--Red);
+        border-radius: 0;
+        color: var(--White)
+    }
+}
